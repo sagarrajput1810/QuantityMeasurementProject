@@ -1,0 +1,15 @@
+C:\Users\asus\Documents\QuantityMeasurementProject\bin\Debug\net10.0\QuantityMeasurementProject.exe
+C:\Users\asus\Documents\QuantityMeasurementProject\bin\Debug\net10.0\QuantityMeasurementProject.deps.json
+C:\Users\asus\Documents\QuantityMeasurementProject\bin\Debug\net10.0\QuantityMeasurementProject.runtimeconfig.json
+C:\Users\asus\Documents\QuantityMeasurementProject\bin\Debug\net10.0\QuantityMeasurementProject.dll
+C:\Users\asus\Documents\QuantityMeasurementProject\bin\Debug\net10.0\QuantityMeasurementProject.pdb
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.AssemblyInfoInputs.cache
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.AssemblyInfo.cs
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.csproj.CoreCompileInputs.cache
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.sourcelink.json
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.dll
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\refint\QuantityMeasurementProject.dll
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.pdb
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\QuantityMeasurementProject.genruntimeconfig.cache
+C:\Users\asus\Documents\QuantityMeasurementProject\obj\Debug\net10.0\ref\QuantityMeasurementProject.dll
