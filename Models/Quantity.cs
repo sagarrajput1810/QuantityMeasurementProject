@@ -27,14 +27,30 @@ namespace QuantityMeasurementSystem.Models
             return false;
         }
 
+        public double ConvertTo(Unit targetUnit)
+        {
+            // Step 1: Pehle apni value ko Inches (Base) mein le aao
+            double valueInInches = GetValueInInches(this);
+
+            // Step 2: Ab use target unit mein badlo
+            switch (targetUnit)
+            {
+                case Unit.FEET: return valueInInches / 12.0;
+                case Unit.YARD: return valueInInches / 36.0;
+                case Unit.CM: return valueInInches * 2.54; // 1 Inch = 2.54 CM
+                case Unit.INCH: return valueInInches;
+                default: return valueInInches;
+            }
+        }
+
         private double GetValueInInches(Quantity q)
         {
             switch (q.Unit)
             {
                 case Unit.FEET: return q.Value * 12.0;
                 case Unit.YARD: return q.Value * 36.0;
-                case Unit.CM:   return q.Value / 2.54; // 1 Inch mein 2.54 CM hote hain
-                default:        return q.Value;
+                case Unit.CM: return q.Value / 2.54; // 1 Inch mein 2.54 CM hote hain
+                default: return q.Value;
             }
         }
 
