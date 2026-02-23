@@ -56,16 +56,12 @@ namespace QuantityMeasurementSystem.Models
 
         public Quantity Add(Quantity other)
         {
-            // Step 1: Pehle dono ki values ko base unit (Inches) mein convert karo
-            double value1InInches = this.GetValueInInches(this);
-            double value2InInches = other.GetValueInInches(other);
+            // Dono ko pehle Inches mein badlo
+            double v1 = GetValueInInches(this);
+            double v2 = GetValueInInches(other);
 
-            // Step 2: Dono ko add karo
-            double totalInInches = value1InInches + value2InInches;
-
-            // Step 3: Ek naya Quantity object bana kar return karo
-            // Hum result hamesha base unit (Inches) mein hi return karenge abhi ke liye
-            return new Quantity(totalInInches, Unit.INCH);
+            // Add karo aur result Inches mein hi return karo
+            return new Quantity(v1 + v2, Unit.INCH);
         }
 
         public override int GetHashCode()
