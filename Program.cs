@@ -2,31 +2,32 @@
 
 try 
 {
-    Console.WriteLine("======= QUANTITY MEASUREMENT SYSTEM FINAL TEST (UC 1-12) =======\n");
+    Console.WriteLine("=== QUANTITY MEASUREMENT SYSTEM: FINAL SHOWCASE ===\n");
 
-    // Test Comparison (UC 12)
-    Quantity oneFoot = new Quantity(1.0, Unit.FEET);
-    Quantity tenInches = new Quantity(10.0, Unit.INCH);
-    Console.WriteLine($"[UC 12] 1 Foot > 10 Inches: {oneFoot.CompareTo(tenInches) > 0}");
+    // Displaying Objects (UC 13)
+    Quantity q1 = new Quantity(1.0, Unit.FEET);
+    Quantity q2 = new Quantity(12.0, Unit.INCH);
+    Console.WriteLine($"Comparing: {q1} and {q2}");
+    Console.WriteLine($"Are they equal? {q1.Equals(q2)}");
 
-    // Test Temperature (UC 11)
-    Quantity c100 = new Quantity(100.0, Unit.CELSIUS);
-    Quantity f212 = new Quantity(212.0, Unit.FAHRENHEIT);
-    Console.WriteLine($"[UC 11] 100°C == 212°F: {c100.Equals(f212)}");
+    // Comparison (UC 12)
+    Quantity heavy = new Quantity(1.0, Unit.TONNE);
+    Quantity light = new Quantity(500.0, Unit.KG);
+    Console.WriteLine($"\nIs {heavy} > {light}? {heavy.CompareTo(light) > 0}");
 
-    // Test Weight Addition (UC 10)
-    Quantity ton1 = new Quantity(1.0, Unit.TONNE);
-    Quantity kg1000 = new Quantity(1000.0, Unit.KG);
-    Console.WriteLine($"[UC 10] 1 Tonne + 1000 KG = {ton1.Add(kg1000).Value} Grams");
+    // Temperature (UC 11)
+    Quantity bodyTempF = new Quantity(98.6, Unit.FAHRENHEIT);
+    Quantity bodyTempC = new Quantity(37.0, Unit.CELSIUS);
+    Console.WriteLine($"\nBody Temp: {bodyTempF} is equal to {bodyTempC}: {bodyTempF.Equals(bodyTempC)}");
 
-    // Test Volume (UC 9)
-    Quantity gal1 = new Quantity(1.0, Unit.GALLON);
-    Quantity lit3_78 = new Quantity(3.78541, Unit.LITER);
-    Console.WriteLine($"[UC 09] 1 Gallon == 3.785 Liters: {gal1.Equals(lit3_78)}");
+    // Addition (UC 10)
+    Quantity milk = new Quantity(1.0, Unit.LITER);
+    Quantity extraMilk = new Quantity(500.0, Unit.ML);
+    Console.WriteLine($"\nTotal Milk: {milk.Add(extraMilk)}");
 
-    Console.WriteLine("\n--- All Tests Passed Successfully! ---");
+    Console.WriteLine("\n--- Project Status: COMPLETED (UC 1-13) ---");
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"Error: {ex.Message}");
+    Console.WriteLine($"\nAlert: {ex.Message}");
 }

@@ -13,6 +13,9 @@ namespace QuantityMeasurementSystem.Models
             Unit = unit;
         }
 
+        // UC 13: Formatting Output
+        public override string ToString() => $"{Value} {Unit.Name}";
+
         // UC 1-11: Equality Logic
         public override bool Equals(object? obj)
         {
@@ -25,12 +28,12 @@ namespace QuantityMeasurementSystem.Models
             return false;
         }
 
-        // UC 12: Comparison Logic (Greater Than / Less Than)
+        // UC 12: Comparison Logic
         public int CompareTo(Quantity? other)
         {
             if (other == null) return 1;
             if (this.Unit.Type != other.Unit.Type)
-                throw new InvalidOperationException("Cannot compare different types.");
+                throw new InvalidOperationException("Incompatible types for comparison.");
 
             double v1 = this.Unit.ConvertToBase(this.Value);
             double v2 = other.Unit.ConvertToBase(other.Value);
@@ -39,25 +42,25 @@ namespace QuantityMeasurementSystem.Models
             return v1 > v2 ? 1 : -1;
         }
 
-        // UC 6-10: Addition Logic
+        // UC 6-10: Mathematical Operations
         public Quantity Add(Quantity other)
         {
             if (this.Unit.Type == Unit.UnitType.TEMPERATURE)
-                throw new InvalidOperationException("Temperature addition not supported.");
+                throw new InvalidOperationException("Temperature addition is physically invalid.");
 
             if (this.Unit.Type != other.Unit.Type)
-                throw new InvalidOperationException("Cannot add different dimensions.");
+                throw new InvalidOperationException("Dimension mismatch in addition.");
 
-            double total = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
+            double totalInBase = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
 
             Unit baseUnit = this.Unit.Type switch {
                 Unit.UnitType.LENGTH => Unit.INCH,
                 Unit.UnitType.VOLUME => Unit.LITER,
                 Unit.UnitType.WEIGHT => Unit.GRAM,
-                _ => throw new Exception("Invalid Type")
+                _ => throw new InvalidOperationException("Unknown Category")
             };
 
-            return new Quantity(total, baseUnit);
+            return new Quantity(totalInBase, baseUnit);
         }
 
         public override int GetHashCode() => HashCode.Combine(Value, Unit);
