@@ -21,8 +21,6 @@ namespace QuantityMeasurementSystem.Models
         public static readonly Unit TONNE = new Unit(1000000.0, UnitType.WEIGHT);
 
         // --- TEMPERATURE (Base: CELSIUS) ---
-        // Formula: (Value - Offset) * Factor
-        // Fahrenheit ke liye: (F - 32) * 5/9 = Celsius
         public static readonly Unit CELSIUS = new Unit(1.0, UnitType.TEMPERATURE, 0);
         public static readonly Unit FAHRENHEIT = new Unit(5.0 / 9.0, UnitType.TEMPERATURE, 32);
 
@@ -37,10 +35,6 @@ namespace QuantityMeasurementSystem.Models
             Offset = offset;
         }
 
-        // Logic updated for Temperature formulas
-        public double ConvertToBase(double value)
-        {
-            return (value - Offset) * ConversionFactor;
-        }
+        public double ConvertToBase(double value) => (value - Offset) * ConversionFactor;
     }
 }

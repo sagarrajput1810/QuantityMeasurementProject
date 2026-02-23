@@ -2,7 +2,7 @@ using System;
 
 namespace QuantityMeasurementSystem.Models
 {
-    public class Quantity
+    public class Quantity : IComparable<Quantity>
     {
         public double Value { get; }
         public Unit Unit { get; }
@@ -13,45 +13,53 @@ namespace QuantityMeasurementSystem.Models
             Unit = unit;
         }
 
+        // UC 1-11: Equality Logic
         public override bool Equals(object? obj)
         {
             if (obj is Quantity other)
             {
                 if (this.Unit.Type != other.Unit.Type) return false;
-
-                double v1 = this.Unit.ConvertToBase(this.Value);
-                double v2 = other.Unit.ConvertToBase(other.Value);
-
-                // Temperature ke liye 0.1 ki precision kaafi hai
-                return Math.Abs(v1 - v2) < 0.1;
+                return Math.Abs(this.Unit.ConvertToBase(this.Value) - 
+                                other.Unit.ConvertToBase(other.Value)) < 0.1;
             }
             return false;
         }
 
+        // UC 12: Comparison Logic (Greater Than / Less Than)
+        public int CompareTo(Quantity? other)
+        {
+            if (other == null) return 1;
+            if (this.Unit.Type != other.Unit.Type)
+                throw new InvalidOperationException("Cannot compare different types.");
+
+            double v1 = this.Unit.ConvertToBase(this.Value);
+            double v2 = other.Unit.ConvertToBase(other.Value);
+
+            if (Math.Abs(v1 - v2) < 0.001) return 0;
+            return v1 > v2 ? 1 : -1;
+        }
+
+        // UC 6-10: Addition Logic
         public Quantity Add(Quantity other)
         {
-            // Physics Rule: Temperature add nahi ki jati (10°C + 10°C != 20°C)
             if (this.Unit.Type == Unit.UnitType.TEMPERATURE)
-            {
-                throw new InvalidOperationException("Addition is not supported for Temperature.");
-            }
+                throw new InvalidOperationException("Temperature addition not supported.");
 
             if (this.Unit.Type != other.Unit.Type)
-            {
-                throw new InvalidOperationException($"Cannot add {this.Unit.Type} and {other.Unit.Type}");
-            }
+                throw new InvalidOperationException("Cannot add different dimensions.");
 
-            double totalInBase = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
+            double total = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
 
-            Unit resultUnit = this.Unit.Type switch
-            {
+            Unit baseUnit = this.Unit.Type switch {
                 Unit.UnitType.LENGTH => Unit.INCH,
                 Unit.UnitType.VOLUME => Unit.LITER,
                 Unit.UnitType.WEIGHT => Unit.GRAM,
-                _ => throw new InvalidOperationException("Invalid Operation")
+                _ => throw new Exception("Invalid Type")
             };
 
-            return new Quantity(totalInBase, resultUnit);
+            return new Quantity(total, baseUnit);
         }
+
+        public override int GetHashCode() => HashCode.Combine(Value, Unit);
     }
 }
