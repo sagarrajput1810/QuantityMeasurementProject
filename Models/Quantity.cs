@@ -13,10 +13,10 @@ namespace QuantityMeasurementSystem.Models
             Unit = unit;
         }
 
-        // UC 13: Formatting Output
-        public override string ToString() => $"{Value} {Unit.Name}";
+        // UC 13: Clean Output
+        public override string ToString() => $"{Math.Round(Value, 2)} {Unit.Name}";
 
-        // UC 1-11: Equality Logic
+        // UC 1-11: Equality
         public override bool Equals(object? obj)
         {
             if (obj is Quantity other)
@@ -28,12 +28,12 @@ namespace QuantityMeasurementSystem.Models
             return false;
         }
 
-        // UC 12: Comparison Logic
+        // UC 12: Comparison
         public int CompareTo(Quantity? other)
         {
             if (other == null) return 1;
             if (this.Unit.Type != other.Unit.Type)
-                throw new InvalidOperationException("Incompatible types for comparison.");
+                throw new InvalidOperationException("Different dimensions cannot be compared.");
 
             double v1 = this.Unit.ConvertToBase(this.Value);
             double v2 = other.Unit.ConvertToBase(other.Value);
@@ -42,25 +42,37 @@ namespace QuantityMeasurementSystem.Models
             return v1 > v2 ? 1 : -1;
         }
 
+        // UC 14: Advanced Conversion
+        public Quantity ConvertTo(Unit targetUnit)
+        {
+            if (this.Unit.Type != targetUnit.Type)
+                throw new InvalidOperationException($"Cannot convert {this.Unit.Name} to {targetUnit.Name}");
+
+            double baseValue = this.Unit.ConvertToBase(this.Value);
+            double convertedValue = (baseValue / targetUnit.ConversionFactor) + targetUnit.Offset;
+
+            return new Quantity(convertedValue, targetUnit);
+        }
+
         // UC 6-10: Mathematical Operations
         public Quantity Add(Quantity other)
         {
             if (this.Unit.Type == Unit.UnitType.TEMPERATURE)
-                throw new InvalidOperationException("Temperature addition is physically invalid.");
+                throw new InvalidOperationException("Adding temperatures is physically incorrect.");
 
             if (this.Unit.Type != other.Unit.Type)
-                throw new InvalidOperationException("Dimension mismatch in addition.");
+                throw new InvalidOperationException("Dimension mismatch.");
 
             double totalInBase = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
 
-            Unit baseUnit = this.Unit.Type switch {
+            Unit resultBase = this.Unit.Type switch {
                 Unit.UnitType.LENGTH => Unit.INCH,
                 Unit.UnitType.VOLUME => Unit.LITER,
                 Unit.UnitType.WEIGHT => Unit.GRAM,
-                _ => throw new InvalidOperationException("Unknown Category")
+                _ => throw new InvalidOperationException()
             };
 
-            return new Quantity(totalInBase, baseUnit);
+            return new Quantity(totalInBase, resultBase);
         }
 
         public override int GetHashCode() => HashCode.Combine(Value, Unit);
