@@ -2,8 +2,10 @@ namespace QuantityMeasurementSystem.Enums
 {
     public enum Unit
     {
-        FEET = 12,
+        // Sab kuch Inches ke respect mein hai
         INCH = 1,
-        YARD = 36
+        FEET = 12,
+        YARD = 36,
+        CM = 0
     }
-}
+}   

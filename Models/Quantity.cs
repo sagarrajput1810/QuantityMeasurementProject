@@ -5,7 +5,7 @@ namespace QuantityMeasurementSystem.Models
     public class Quantity
     {
         public double Value { get; }
-        public Unit Unit { get; } // Nayi property
+        public Unit Unit { get; }
 
         public Quantity(double value, Unit unit)
         {
@@ -17,23 +17,30 @@ namespace QuantityMeasurementSystem.Models
         {
             if (obj is Quantity other)
             {
-                // Unit ko 'int' ya 'double' mein cast karke seedha multiply kar do
-                double value1 = this.Value * (double)this.Unit;
-                double value2 = other.Value * (double)other.Unit;
+                double value1 = GetValueInInches(this);
+                double value2 = GetValueInInches(other);
 
-                return value1 == value2;
+                // IMPORTANT: == ki jagah ye use karo
+                // Dono ke beech ka difference 0.001 se kam hona chahiye
+                return Math.Abs(value1 - value2) < 0.001;
             }
             return false;
         }
 
-        // Ye helper method hai jo units ko Inches mein badlega
-        private double ConvertToBase(Quantity q)
+        private double GetValueInInches(Quantity q)
         {
-            if (q.Unit == Unit.FEET)
+            switch (q.Unit)
             {
-                return q.Value * 12.0; // 1 Foot = 12 Inches
+                case Unit.FEET: return q.Value * 12.0;
+                case Unit.YARD: return q.Value * 36.0;
+                case Unit.CM:   return q.Value / 2.54; // 1 Inch mein 2.54 CM hote hain
+                default:        return q.Value;
             }
-            return q.Value; // Agar pehle se inch hai toh wahi rehne do
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Value, Unit);
         }
     }
 }
