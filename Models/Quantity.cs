@@ -17,10 +17,9 @@ namespace QuantityMeasurementSystem.Models
         {
             if (obj is Quantity other)
             {
-                // Simple comparison ab kaam nahi karega
-                // Hume dono ko ek common base (Inches) mein convert karna hoga
-                double value1 = ConvertToBase(this);
-                double value2 = ConvertToBase(other);
+                // Unit ko 'int' ya 'double' mein cast karke seedha multiply kar do
+                double value1 = this.Value * (double)this.Unit;
+                double value2 = other.Value * (double)other.Unit;
 
                 return value1 == value2;
             }
