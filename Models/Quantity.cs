@@ -21,35 +21,37 @@ namespace QuantityMeasurementSystem.Models
 
                 double v1 = this.Unit.ConvertToBase(this.Value);
                 double v2 = other.Unit.ConvertToBase(other.Value);
-                return Math.Abs(v1 - v2) < 0.001;
+
+                // Temperature ke liye 0.1 ki precision kaafi hai
+                return Math.Abs(v1 - v2) < 0.1;
             }
             return false;
         }
 
         public Quantity Add(Quantity other)
         {
-            // Security: Prevent adding different dimensions
+            // Physics Rule: Temperature add nahi ki jati (10°C + 10°C != 20°C)
+            if (this.Unit.Type == Unit.UnitType.TEMPERATURE)
+            {
+                throw new InvalidOperationException("Addition is not supported for Temperature.");
+            }
+
             if (this.Unit.Type != other.Unit.Type)
             {
                 throw new InvalidOperationException($"Cannot add {this.Unit.Type} and {other.Unit.Type}");
             }
 
-            double v1 = this.Unit.ConvertToBase(this.Value);
-            double v2 = other.Unit.ConvertToBase(other.Value);
-            double totalInBase = v1 + v2;
+            double totalInBase = this.Unit.ConvertToBase(this.Value) + other.Unit.ConvertToBase(other.Value);
 
-            // Determine result unit based on type
             Unit resultUnit = this.Unit.Type switch
             {
                 Unit.UnitType.LENGTH => Unit.INCH,
                 Unit.UnitType.VOLUME => Unit.LITER,
                 Unit.UnitType.WEIGHT => Unit.GRAM,
-                _ => throw new InvalidOperationException("Unknown Unit Type")
+                _ => throw new InvalidOperationException("Invalid Operation")
             };
 
             return new Quantity(totalInBase, resultUnit);
         }
-
-        public override int GetHashCode() => HashCode.Combine(Value, Unit);
     }
 }
