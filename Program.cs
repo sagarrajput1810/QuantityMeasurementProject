@@ -1,10 +1,12 @@
 ﻿using QuantityMeasurementSystem.Models;
 using QuantityMeasurementSystem.Enums;
 
-// 1 Foot ko CM mein badal kar dekhte hain
-Quantity myFoot = new Quantity(1.0, Unit.FEET);
-double resultInCm = myFoot.ConvertTo(Unit.CM);
+// UC 6: 2 Inches + 2 Inches = 4 Inches
+Quantity q1 = new Quantity(2.0, Unit.INCH);
+Quantity q2 = new Quantity(2.0, Unit.INCH);
 
-Console.WriteLine("--- UC 5: Unit Conversion Test ---");
-Console.WriteLine($"1 Foot is equal to {resultInCm} CM"); 
-// Output: 30.48 CM aana chahiye
+Quantity result = q1.Add(q2);
+
+Console.WriteLine("--- UC 6: Addition Test ---");
+Console.WriteLine($"2 Inches + 2 Inches = {result.Value} {result.Unit}");
+// Output: 4 INCH
