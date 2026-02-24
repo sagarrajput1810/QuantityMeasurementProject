@@ -13,10 +13,10 @@ namespace QuantityMeasurementSystem.Models
             Unit = unit;
         }
 
-        // UC 13: Clean Output
+
         public override string ToString() => $"{Math.Round(Value, 2)} {Unit.Name}";
 
-        // UC 1-11: Equality
+    
         public override bool Equals(object? obj)
         {
             if (obj is Quantity other)
@@ -28,7 +28,7 @@ namespace QuantityMeasurementSystem.Models
             return false;
         }
 
-        // UC 12: Comparison
+       
         public int CompareTo(Quantity? other)
         {
             if (other == null) return 1;
@@ -42,7 +42,7 @@ namespace QuantityMeasurementSystem.Models
             return v1 > v2 ? 1 : -1;
         }
 
-        // UC 14: Advanced Conversion
+    
         public Quantity ConvertTo(Unit targetUnit)
         {
             if (this.Unit.Type != targetUnit.Type)
@@ -54,7 +54,7 @@ namespace QuantityMeasurementSystem.Models
             return new Quantity(convertedValue, targetUnit);
         }
 
-        // UC 6-10: Mathematical Operations
+   
         public Quantity Add(Quantity other)
         {
             if (this.Unit.Type == Unit.UnitType.TEMPERATURE)
