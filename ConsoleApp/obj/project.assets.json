@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurementProject.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\QuantityMeasurementProject.csproj",
       "projectName": "QuantityMeasurementProject",
-      "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurementProject.csproj",
+      "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\QuantityMeasurementProject.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\obj\\",
+      "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
