@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZgRf3h2T2oo=",
+  "dgSpecHash": "CyovNJlrPfA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\QuantityMeasurementProject.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Console\\QuantityMeasurement.Console.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

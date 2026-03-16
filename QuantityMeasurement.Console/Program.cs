@@ -1,30 +1,36 @@
-﻿using QuantityMeasurementSystem.Models;
+﻿// File: Program.cs
+using QuantityMeasurementSystem.Models;
+using QuantityMeasurementSystem.Business;
+using QuantityMeasurementSystem.Repository;
 
-try 
+namespace QuantityMeasurementSystem.ConsoleApp
 {
-    Console.WriteLine("=== QUANTITY MEASUREMENT SYSTEM FINAL (UC 1-14) ===\n");
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Manual Dependency Injection (Boilerplate)
+            IMeasurementRepository repo = new MeasurementRepository();
+            IMeasurementBusiness business = new MeasurementBusiness(repo);
 
-    // UC 14: Conversion Test
-    Quantity oneTon = new Quantity(1.0, Unit.TONNE);
-    Console.WriteLine($"Conversion: {oneTon} is {oneTon.ConvertTo(Unit.KG)}");
+            Console.WriteLine("=== UC15: Quantity Measurement System (N-Tier) ===\n");
 
-    // UC 11: Temperature Test
-    Quantity freezingC = new Quantity(0.0, Unit.CELSIUS);
-    Console.WriteLine($"Temperature: {freezingC} is {freezingC.ConvertTo(Unit.FAHRENHEIT)}");
+            try
+            {
+                // Scenario: User wants to convert 5 Feet to Inches
+                double inputVal = 5.0;
+                Unit from = Unit.FEET;
+                Unit to = Unit.INCH;
 
-    // UC 12: Comparison
-    Quantity yard = new Quantity(1.0, Unit.YARD);
-    Quantity feet = new Quantity(2.0, Unit.FEET);
-    Console.WriteLine($"Comparison: Is {yard} > {feet}? {yard.CompareTo(feet) > 0}");
+                Quantity result = business.Convert(inputVal, from, to);
 
-    // UC 6-10: Addition
-    Quantity milk = new Quantity(1.0, Unit.LITER);
-    Quantity ml = new Quantity(500.0, Unit.ML);
-    Console.WriteLine($"Addition: {milk} + {ml} = {milk.Add(ml)}");
-
-    Console.WriteLine("\n--- SUCCESS: All Units Working Correctly! ---");
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Input: {inputVal} {from.Name}");
+                Console.WriteLine($"Converted Result: {result}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+    }
 }

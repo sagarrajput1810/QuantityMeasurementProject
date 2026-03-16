@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "QuantityMeasurement.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "QuantityMeasurement.Models": "1.0.0",
+          "QuantityMeasurement.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QuantityMeasurement.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuantityMeasurement.Business.dll": {}
+        }
+      },
+      "QuantityMeasurement.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/QuantityMeasurement.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuantityMeasurement.Models.dll": {}
+        }
+      },
+      "QuantityMeasurement.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "QuantityMeasurement.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QuantityMeasurement.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QuantityMeasurement.Repository.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "QuantityMeasurement.Business/1.0.0": {
+      "type": "project",
+      "path": "../QuantityMeasurement.Business/QuantityMeasurement.Business.csproj",
+      "msbuildProject": "../QuantityMeasurement.Business/QuantityMeasurement.Business.csproj"
+    },
+    "QuantityMeasurement.Models/1.0.0": {
+      "type": "project",
+      "path": "../QuantityMeasurement.Models/QuantityMeasurement.Models.csproj",
+      "msbuildProject": "../QuantityMeasurement.Models/QuantityMeasurement.Models.csproj"
+    },
+    "QuantityMeasurement.Repository/1.0.0": {
+      "type": "project",
+      "path": "../QuantityMeasurement.Repository/QuantityMeasurement.Repository.csproj",
+      "msbuildProject": "../QuantityMeasurement.Repository/QuantityMeasurement.Repository.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "QuantityMeasurement.Business >= 1.0.0",
+      "QuantityMeasurement.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\asus\\.nuget\\packages\\": {}
@@ -13,11 +70,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\QuantityMeasurementProject.csproj",
-      "projectName": "QuantityMeasurementProject",
-      "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\QuantityMeasurementProject.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Console\\QuantityMeasurement.Console.csproj",
+      "projectName": "QuantityMeasurement.Console",
+      "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Console\\QuantityMeasurement.Console.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\ConsoleApp\\obj\\",
+      "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,7 +90,14 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Business\\QuantityMeasurement.Business.csproj": {
+              "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Business\\QuantityMeasurement.Business.csproj"
+            },
+            "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj": {
+              "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
