@@ -1,4 +1,4 @@
-﻿// File: IMeasurementRepository.cs
+﻿using System.Collections.Generic;
 using QuantityMeasurementSystem.Models;
 
 namespace QuantityMeasurementSystem.Repository
@@ -6,15 +6,7 @@ namespace QuantityMeasurementSystem.Repository
     public interface IMeasurementRepository
     {
         IEnumerable<Unit> GetAllUnits();
-    }
-
-    // File: MeasurementRepository.cs
-    public class MeasurementRepository : IMeasurementRepository
-    {
-        public IEnumerable<Unit> GetAllUnits()
-        {
-            // In a real app, this would come from a Database (SQL)
-            return new List<Unit> { Unit.INCH, Unit.FEET, Unit.KG, Unit.CELSIUS, Unit.LITER };
-        }
+        void SaveConversion(ConversionHistoryEntity entity);
+        IEnumerable<ConversionHistoryEntity> GetConversionHistory();
     }
 }
