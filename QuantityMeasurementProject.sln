@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityMeasurement.Models"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityMeasurement.Console", "QuantityMeasurement.Console\QuantityMeasurement.Console.csproj", "{FAFFCB69-E580-486A-BDBF-E7B07180171C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityMeasurementSystem.WebAPI", "QuantityMeasurementSystem.WebAPI\QuantityMeasurementSystem.WebAPI.csproj", "{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{FAFFCB69-E580-486A-BDBF-E7B07180171C}.Release|x64.Build.0 = Release|Any CPU
 		{FAFFCB69-E580-486A-BDBF-E7B07180171C}.Release|x86.ActiveCfg = Release|Any CPU
 		{FAFFCB69-E580-486A-BDBF-E7B07180171C}.Release|x86.Build.0 = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|x64.Build.0 = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Debug|x86.Build.0 = Debug|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|x64.ActiveCfg = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|x64.Build.0 = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|x86.ActiveCfg = Release|Any CPU
+		{091E3C5A-D0A4-4641-8A6A-EB276BDB1073}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

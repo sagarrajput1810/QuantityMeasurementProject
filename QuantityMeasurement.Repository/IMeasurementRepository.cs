@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using QuantityMeasurementSystem.Models;
+﻿// QuantityMeasurement.Repository/IMeasurementRepository.cs
+using System.Collections.Generic;
+using QuantityMeasurement.Models;
 
-namespace QuantityMeasurementSystem.Repository
+namespace QuantityMeasurement.Repository
 {
     public interface IMeasurementRepository
     {

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using QuantityMeasurementSystem.Models;
+﻿// QuantityMeasurement.Business/IMeasurementBusiness.cs
+using System.Collections.Generic;
+using QuantityMeasurement.Models;
 
-namespace QuantityMeasurementSystem.Business
+namespace QuantityMeasurement.Business
 {
     public interface IMeasurementBusiness
     {

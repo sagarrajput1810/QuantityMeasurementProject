@@ -1,9 +1,10 @@
+// QuantityMeasurement.Business/MeasurementBusiness.cs
 using System;
 using System.Collections.Generic;
-using QuantityMeasurementSystem.Models;
-using QuantityMeasurementSystem.Repository;
+using QuantityMeasurement.Models;
+using QuantityMeasurement.Repository;
 
-namespace QuantityMeasurementSystem.Business
+namespace QuantityMeasurement.Business
 {
     public class MeasurementBusiness : IMeasurementBusiness
     {

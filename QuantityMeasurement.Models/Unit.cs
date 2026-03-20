@@ -1,6 +1,7 @@
+// QuantityMeasurement.Models/Unit.cs
 using System;
 
-namespace QuantityMeasurementSystem.Models
+namespace QuantityMeasurement.Models
 {
     public class Unit
     {
