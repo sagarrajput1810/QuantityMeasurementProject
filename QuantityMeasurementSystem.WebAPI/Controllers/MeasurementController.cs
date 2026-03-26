@@ -3,6 +3,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using QuantityMeasurement.Business;
 using QuantityMeasurement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QuantityMeasurementSystem.Controllers
 {
@@ -71,6 +72,7 @@ namespace QuantityMeasurementSystem.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("history")]
         public IActionResult GetHistory()
         {
