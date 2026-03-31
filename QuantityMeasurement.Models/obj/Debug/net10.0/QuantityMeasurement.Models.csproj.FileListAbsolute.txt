@@ -10,3 +10,15 @@ C:\Users\asus\Documents\QuantityMeasurementProject\QuantityMeasurement.Models\ob
 C:\Users\asus\Documents\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\refint\QuantityMeasurement.Models.dll
 C:\Users\asus\Documents\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.pdb
 C:\Users\asus\Documents\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\ref\QuantityMeasurement.Models.dll
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\bin\Debug\net10.0\QuantityMeasurement.Models.deps.json
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\bin\Debug\net10.0\QuantityMeasurement.Models.dll
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\bin\Debug\net10.0\QuantityMeasurement.Models.pdb
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.AssemblyInfoInputs.cache
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.AssemblyInfo.cs
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.csproj.CoreCompileInputs.cache
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.sourcelink.json
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.dll
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\refint\QuantityMeasurement.Models.dll
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\QuantityMeasurement.Models.pdb
+C:\Users\asus\Documents\QuantityMeasurement\QuantityMeasurementProject\QuantityMeasurement.Models\obj\Debug\net10.0\ref\QuantityMeasurement.Models.dll
