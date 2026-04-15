@@ -13,9 +13,9 @@ builder.Services.AddControllers();
 // Add CORS Policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://measurementsite.azurewebsites.net")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -60,9 +60,8 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty;
 });
 
-app.UseCors("AllowAll");
-
 app.UseAuthentication();
+app.UseCors("AllowFrontend");
 app.UseAuthorization();
 
 app.MapControllers();
