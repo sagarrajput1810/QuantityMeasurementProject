@@ -64,5 +64,6 @@ app.UseAuthentication();
 app.UseCors("AllowFrontend");
 app.UseAuthorization();
 
+app.MapGet("/health", () => "healthy").AllowAnonymous();
 app.MapControllers();
 app.Run();
