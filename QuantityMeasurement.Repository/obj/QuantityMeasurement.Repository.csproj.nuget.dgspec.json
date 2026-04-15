@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj": {}
+    "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj": {
+    "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj",
         "projectName": "QuantityMeasurement.Models",
-        "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj",
+        "projectPath": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -339,14 +339,14 @@
         }
       }
     },
-    "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj": {
+    "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj",
         "projectName": "QuantityMeasurement.Repository",
-        "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj",
+        "projectPath": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\QuantityMeasurement.Repository.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -363,8 +363,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj": {
-                "projectPath": "C:\\Users\\asus\\Documents\\QuantityMeasurement\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj"
+              "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj": {
+                "projectPath": "C:\\Users\\asus\\Downloads\\Measurementproject\\QuantityMeasurementProject\\QuantityMeasurement.Models\\QuantityMeasurement.Models.csproj"
               }
             }
           }
