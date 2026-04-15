@@ -54,7 +54,11 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+    c.RoutePrefix = string.Empty;
+});
 
 app.UseCors("AllowAll");
 
