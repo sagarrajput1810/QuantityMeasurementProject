@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuantityMeasurementSystem.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3eebf524d6282680156d77bc82216bd2ed5150ab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c501fb13135d63cafb55d36d158a8be0d6dc45e")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuantityMeasurementSystem.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuantityMeasurementSystem.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
