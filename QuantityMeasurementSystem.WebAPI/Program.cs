@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("https://measurementsite.azurewebsites.net")
+        policy.WithOrigins("https://convertorapp.azurewebsites.net")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
