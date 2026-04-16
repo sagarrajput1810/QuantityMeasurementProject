@@ -1,4 +1,3 @@
-﻿// QuantityMeasurement.Repository/IMeasurementRepository.cs
 using System.Collections.Generic;
 using QuantityMeasurement.Models;
 
@@ -8,6 +7,7 @@ namespace QuantityMeasurement.Repository
     {
         IEnumerable<Unit> GetAllUnits();
         void SaveConversion(ConversionHistoryEntity entity);
-        IEnumerable<ConversionHistoryEntity> GetConversionHistory();
+        IEnumerable<ConversionHistoryEntity> GetConversionHistory(int userId);
+        void DeleteAllHistory(int userId);
     }
 }

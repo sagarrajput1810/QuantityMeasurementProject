@@ -34,5 +34,25 @@ namespace QuantityMeasurement.Models
         }
 
         public double ConvertToBase(double value) => (value - Offset) * ConversionFactor;
+
+        public static Unit GetUnitByName(string unitName)
+        {
+            return unitName?.ToUpper() switch
+            {
+                "INCH" => INCH,
+                "FEET" => FEET,
+                "YARD" => YARD,
+                "CM" => CM,
+                "LITER" => LITER,
+                "GALLON" => GALLON,
+                "ML" => ML,
+                "GRAM" => GRAM,
+                "KG" => KG,
+                "TONNE" => TONNE,
+                "CELSIUS" => CELSIUS,
+                "FAHRENHEIT" => FAHRENHEIT,
+                _ => null
+            };
+        }
     }
 }

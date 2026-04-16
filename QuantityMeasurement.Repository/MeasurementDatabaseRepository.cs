@@ -1,4 +1,3 @@
-// QuantityMeasurement.Repository/MeasurementDatabaseRepository.cs
 using System.Collections.Generic;
 using System.Linq;
 using QuantityMeasurement.Models;
@@ -25,11 +24,19 @@ namespace QuantityMeasurement.Repository
             _context.SaveChanges();
         }
 
-        public IEnumerable<ConversionHistoryEntity> GetConversionHistory()
+        public IEnumerable<ConversionHistoryEntity> GetConversionHistory(int userId)
         {
             return _context.ConversionHistory
+                           .Where(h => h.UserId == userId)
                            .OrderByDescending(h => h.CreatedAt)
                            .ToList();
+        }
+
+        public void DeleteAllHistory(int userId)
+        {
+            var userHistory = _context.ConversionHistory.Where(h => h.UserId == userId);
+            _context.ConversionHistory.RemoveRange(userHistory);
+            _context.SaveChanges();
         }
     }
 }

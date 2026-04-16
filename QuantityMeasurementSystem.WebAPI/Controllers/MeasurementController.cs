@@ -1,5 +1,7 @@
 // QuantityMeasurementSystem/Controllers/MeasurementController.cs
 using System;
+using System.Linq;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using QuantityMeasurement.Business;
 using QuantityMeasurement.Models;
@@ -9,6 +11,7 @@ namespace QuantityMeasurementSystem.Controllers
 {
     [ApiController]
     [Route("api/v1/measurements")]
+    [Authorize] // Require token for all measurement actions
     public class MeasurementController : ControllerBase
     {
         private readonly IMeasurementBusiness _business;
@@ -18,27 +21,25 @@ namespace QuantityMeasurementSystem.Controllers
             _business = business;
         }
 
+        private int GetCurrentUserId()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null) return 0;
+            return int.Parse(userIdClaim.Value);
+        }
+
         [HttpPost("convert")]
         public IActionResult Convert([FromBody] ConversionRequestDTO request)
         {
             try
             {
-                Unit fromUnit = GetUnitByName(request.FromUnit);
-                Unit toUnit = GetUnitByName(request.ToUnit);
+                Unit fromUnit = Unit.GetUnitByName(request.FromUnit);
+                Unit toUnit = Unit.GetUnitByName(request.ToUnit);
 
                 if (fromUnit == null || toUnit == null)
-                {
-                    return BadRequest(new 
-                    { 
-                        timestamp = DateTime.UtcNow.ToString("o"),
-                        status = 400,
-                        error = "Bad Request",
-                        message = "Invalid unit specified.",
-                        path = HttpContext.Request.Path.Value
-                    });
-                }
+                    return BadRequest(new { message = "Invalid unit specified." });
 
-                var result = _business.Convert(request.Value, fromUnit, toUnit);
+                var result = _business.Convert(request.Value, fromUnit, toUnit, GetCurrentUserId());
                 
                 return Ok(new 
                 { 
@@ -48,38 +49,76 @@ namespace QuantityMeasurementSystem.Controllers
                     ConvertedUnit = request.ToUnit 
                 });
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
-                return BadRequest(new 
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("compare")]
+        public IActionResult Compare([FromBody] ComparisonRequestDTO request)
+        {
+            if (request == null) return BadRequest(new { message = "Request body is null." });
+
+            try
+            {
+                Unit unit1 = Unit.GetUnitByName(request.Unit1);
+                Unit unit2 = Unit.GetUnitByName(request.Unit2);
+
+                if (unit1 == null || unit2 == null)
+                    return BadRequest(new { message = "Unit not found." });
+
+                if (unit1.Type != unit2.Type)
+                    return BadRequest(new { message = "Category mismatch." });
+
+                bool isEqual = _business.Compare(request.Value1, unit1, request.Value2, unit2, GetCurrentUserId());
+                return Ok(new { IsEqual = isEqual });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("operation")]
+        public IActionResult PerformOperation([FromBody] OperationRequestDTO request)
+        {
+            if (request == null) return BadRequest(new { message = "Request body is null." });
+
+            try
+            {
+                Unit unit1 = Unit.GetUnitByName(request.Unit1);
+                Unit? unit2 = null;
+                string op = request.Operation?.ToLower() ?? "";
+
+                if (op == "add" || op == "sub")
+                {
+                    unit2 = Unit.GetUnitByName(request.Unit2);
+                    if (unit2 == null) return BadRequest(new { message = "Second unit is required." });
+                }
+
+                if (unit1 == null) return BadRequest(new { message = "First unit is invalid." });
+
+                var result = _business.PerformOperation(request.Value1, unit1, request.Value2, unit2, op, GetCurrentUserId());
+                return Ok(new 
                 { 
-                    timestamp = DateTime.UtcNow.ToString("o"),
-                    status = 400,
-                    error = "Quantity Measurement Error",
-                    message = ex.Message,
-                    path = HttpContext.Request.Path.Value
+                    Value = Math.Round(result.Value, 2), 
+                    Unit = result.Unit.Name 
                 });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new 
-                { 
-                    timestamp = DateTime.UtcNow.ToString("o"),
-                    status = 500,
-                    error = "Internal Server Error",
-                    message = ex.Message,
-                    path = HttpContext.Request.Path.Value
-                });
+                return BadRequest(new { message = ex.Message });
             }
         }
 
-        [Authorize]
-        [HttpGet("history")]
-        public IActionResult GetHistory()
+        [HttpDelete("history")]
+        public IActionResult DeleteHistory()
         {
             try
             {
-                var history = _business.GetHistory();
-                return Ok(history);
+                _business.DeleteHistory(GetCurrentUserId());
+                return Ok(new { message = "History deleted successfully." });
             }
             catch (Exception ex)
             {
@@ -87,24 +126,18 @@ namespace QuantityMeasurementSystem.Controllers
             }
         }
 
-        private Unit GetUnitByName(string unitName)
+        [HttpGet("history")]
+        public IActionResult GetHistory()
         {
-            return unitName.ToUpper() switch
+            try
             {
-                "INCH" => Unit.INCH,
-                "FEET" => Unit.FEET,
-                "YARD" => Unit.YARD,
-                "CM" => Unit.CM,
-                "LITER" => Unit.LITER,
-                "GALLON" => Unit.GALLON,
-                "ML" => Unit.ML,
-                "GRAM" => Unit.GRAM,
-                "KG" => Unit.KG,
-                "TONNE" => Unit.TONNE,
-                "CELSIUS" => Unit.CELSIUS,
-                "FAHRENHEIT" => Unit.FAHRENHEIT,
-                _ => null
-            };
+                var history = _business.GetHistory(GetCurrentUserId());
+                return Ok(history);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
     }
 }
